@@ -9,15 +9,26 @@ async function run() {
         const badgeResult = core.getInput('badge_result');
         const deployResult = core.getInput('deploy_result');
 
+        core.info(`Configurant transport amb host: ${process.env.SMTP_HOST}`);
+        core.info(`Port: ${process.env.SMTP_PORT}`);
+        core.info(`User: ${process.env.SMTP_USER}`);
+
         const transporter = nodemailer.createTransport({
-            host: process.env.SMTP_HOST || 'smtp.gmail.com',
-            port: process.env.SMTP_PORT || 587,
+            host: process.env.SMTP_HOST,
+            port: parseInt(process.env.SMTP_PORT),
             secure: false,
             auth: {
                 user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASS,
             },
+            tls: {
+                rejectUnauthorized: false
+            }
         });
+
+        // Verificar la connexió
+        await transporter.verify();
+        core.info('Connexió SMTP verificada correctament');
 
         const repoName = process.env.GITHUB_REPOSITORY;
         const workflowName = process.env.GITHUB_WORKFLOW;
@@ -39,8 +50,9 @@ async function run() {
       `,
         };
 
-        await transporter.sendMail(mailOptions);
-        core.info('Email enviat correctament');
+        const info = await transporter.sendMail(mailOptions);
+        core.info(`Email enviat correctament: ${info.messageId}`);
+
     } catch (error) {
         core.setFailed(`Error enviant l'email: ${error.message}`);
     }
