@@ -44,7 +44,7 @@ jobs:
               continue-on-error: true
               with:
                   build: npm run build
-                  start: npm start
+                  start: npm start -- -p 3050
                   wait-on: 'http://localhost:3050'
                   wait-on-timeout: 120
 
