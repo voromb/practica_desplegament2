@@ -2,13 +2,13 @@
   "name": "proba",
   "version": "0.1.0",
   "private": true,
-"scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start",
-  "lint": "next lint .",
-  "cypress": "cypress run"
-},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "cypress": "cypress run"
+  },
   "dependencies": {
     "next": "16.0.0",
     "react": "19.2.0",
@@ -21,6 +21,8 @@
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "cypress": "^15.5.0",
+    "eslint": "^9.38.0",
+    "eslint-config-next": "^16.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
