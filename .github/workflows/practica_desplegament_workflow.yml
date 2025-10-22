@@ -119,6 +119,11 @@ jobs:
 
             - name: Send email notification
               uses: ./.github/actions/send-notification
+              env:
+                  SMTP_HOST: ${{ secrets.SMTP_HOST }}
+                  SMTP_PORT: ${{ secrets.SMTP_PORT }}
+                  SMTP_USER: ${{ secrets.SMTP_USER }}
+                  SMTP_PASS: ${{ secrets.SMTP_PASS }}
               with:
                   recipient: ${{ secrets.EMAIL_RECIPIENT }}
                   linter_result: ${{ needs.linter_job.result }}
