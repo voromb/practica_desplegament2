@@ -39,3 +39,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## RESULTAT DELS ÚLTIMS TESTS per a ANTONI
 ![Test Status](https://img.shields.io/badge/test-failure-red)
+
