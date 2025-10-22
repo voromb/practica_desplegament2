@@ -1,0 +1,10 @@
+{
+  "name": "send-notification-action",
+  "version": "1.0.0",
+  "description": "GitHub Action to send email notifications",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "nodemailer": "^6.9.7"
+  }
+}
